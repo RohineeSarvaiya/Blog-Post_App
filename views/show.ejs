@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog</title>
+</head>
+
+<body>
+  <div class="container">    
+    <a style="margin-top:20px;" href="/" class="btn btn-success">Back to Home Page</a> 
+
+    <% result.forEach((blog) => { %>
+      <div class="card mt-4">
+        <div class="card-body">  
+          <h4 class="card-title"><%=blog.TITLE%></h4>
+          <div class="card-subtitle text-muted mb-2"><%=blog.CREATED_DATE%></div>
+          <div class="card-text mb-2"><i>- <%=blog.AUTHOR%></i></div>
+          <br>
+          <a href="/edit/<%=blog.ID%>" class="btn btn-info">Edit</a> &nbsp;
+          <a id="deleteBtn" class="btn btn-danger" onclick="return confirmation()"  href="/delete/<%=blog.ID%>">Delete</a>
+          <br>
+          <br>
+          <div class="card-text mb-2"><i><%=blog.ABSTRACT%></i></div>
+          <div class="card-text mb-2">Categories :- <%=blog.CATEGORIES%></div>
+          <br>
+          <div class="card-text mb-2"><img style="height: 180px; width: 250px;" src="<%=blog.IMAGE%>" alt="<%=blog.TITLE%>"></div>
+          <div class="card-text mb-2"><%=blog.DESCRIPTION%></div>
+        </div> 
+      </div>
+    <% }) %>  
+
+  </div>
+</body>
+
+<script>
+  function confirmation() {
+    var x = confirm("Are you sure, you want to delete this blog?")
+    if(x)
+    {
+        return true;
+    }
+    else
+    {
+        var deleteButton = document.getElementById("deleteBtn");
+        deleteButton.blur();
+        return false;
+    }
+  }
+</script>
+
+</html>

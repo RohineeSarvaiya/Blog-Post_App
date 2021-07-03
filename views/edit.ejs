@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="mb-4">Edit Blog</h1>
+
+    <% result.forEach((blog) => { %>
+    <form action="/edit/<%=blog.ID%>?_method=put" method="POST">
+          <div class="form-group">
+            <label for="title">TITLE :</label>
+            <input required value="<%=blog.TITLE%>" type="text" name="title" id="title" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="author">AUTHOR :</label>
+            <input required value="<%=blog.AUTHOR%>" type="text" name="author" id="author" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="abstract">ABSTRACT :</label>
+            <textarea required name="abstract" id="abstract" class="form-control"><%=blog.ABSTRACT%></textarea>
+          </div>
+          <div class="form-group">
+            <label for="image">IMAGE :</label>
+            <input required value="<%=blog.IMAGE%>" type="text" name="image" id="image" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="categories">CATEGORIES :</label>
+            <input required value="<%=blog.CATEGORIES%>" type="text" name="categories" id="categories" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="description">DESCRIPTION :</label>
+            <textarea required name="description" id="description" class="form-control"><%=blog.DESCRIPTION%></textarea>
+          </div>
+          
+          <div>
+            <a href="/" class="btn btn-secondary">Cancel</a>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary">Edit</button>
+          </div>
+    </form>
+    <% }) %>  
+
+  </div>
+</body>
+
+</html>
